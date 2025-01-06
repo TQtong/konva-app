@@ -25,23 +25,15 @@
 </template>
 
 <script setup lang="ts">
+import { defineEmits } from 'vue'
 import { ArrowDown } from '@element-plus/icons-vue'
 
 import { itemList } from './composable/data'
 
-const handleClick = (item: string) => {
-  switch (item) {
-    case 'square':
-      break
-    case '2':
-      console.log('2')
-      break
-    case '3':
-      console.log('3')
-      break
-    default:
-      break
-  }
+const emits = defineEmits(['click'])
+
+const handleClick = (type: string) => {
+  emits('click', type)
 }
 </script>
 

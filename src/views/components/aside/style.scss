@@ -1,15 +1,21 @@
 #aside {
-  width: 100%;
   height: 100%;
 
   .el-dropdown {
     width: 100%;
     text-align: center;
+    &:hover {
+      border: none;
+    }
   }
 
   .el-dropdown-link {
     width: 100%;
     cursor: pointer;
     color: var(--el-color-primary);
+
+    &:hover {
+      border: none;
+    }
   }
 }

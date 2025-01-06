@@ -1,20 +1,44 @@
 <template>
   <div id="main">
-    <div class="test" ref="container"></div>
+    <AsideComponent @click="handleClick" />
+    <div class="konva-container" ref="container"></div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, useTemplateRef } from 'vue'
+
+import AsideComponent from './components/aside/index.vue'
+
 import BaseClass from '@/class/BaseClass'
 import CircleClass from '@/class/CircleClass'
 import ShapeClass from '@/class/ShapeClass'
 import LineClass from '@/class/LineClass'
 
+import { createRect } from './composable/index'
+
 const container = useTemplateRef<HTMLDivElement>('container')
 
+const handleClick = (type: string) => {
+  switch (type) {
+    case 'square':
+      createRect()
+      break
+    case '2':
+      console.log('2')
+      break
+    case '3':
+      console.log('3')
+      break
+    default:
+      break
+  }
+}
+
 onMounted(() => {
-  const { layer } = new BaseClass(container.value as HTMLDivElement)
+  window.baseClass = new BaseClass(container.value as HTMLDivElement)
+
+  const layer = window.baseClass.layer
 
   // we will use custom shape for curve
   const quadraticLine = new ShapeClass({
