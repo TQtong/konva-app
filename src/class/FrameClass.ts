@@ -12,22 +12,6 @@ const config = {
   draggable: true,
 }
 
-const dragConfig = {
-  sceneFunc: sceneFunc,
-  fill: 'grey',
-  stroke: 'black',
-  strokeWidth: 10,
-  draggable: true,
-}
-
-const notDragConfig = {
-  sceneFunc: sceneFunc,
-  fill: 'grey',
-  stroke: 'black',
-  strokeWidth: 10,
-  draggable: false,
-}
-
 interface IFragment {
   outerPoints: IPoint[]
   interPoints: IPoint[]
@@ -151,9 +135,7 @@ export const createShape = (
     }
     sideNo++
   }
-  console.log(sides)
 
-  debugger
   const konvaShape = new Konva.Shape(config)
   // konvaShape.attrs.name = name
   konvaShape.attrs.sides = sides

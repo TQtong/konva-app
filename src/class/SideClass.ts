@@ -3,8 +3,6 @@ import { type IPoint } from '@/interfaces/IShape'
 import {
   calculateArcCircleCenter,
   calculateArcLengthAndMidPoint,
-  distance,
-  calculatePointC,
   calculateAngles,
   areLinesCollinear,
   isCounterClockwise,
@@ -89,31 +87,6 @@ export class SideClass {
     return set
   }
 
-  // 边弯曲
-  bend(dis) {
-    const midPoint = calculateArcLengthAndMidPoint(this.p1, this.p2, this.centerPoint)
-    // const midPoint = calculateArcLengthAndMidPoint(this.p1, this.p2, new Point(this.line.centerX, this.line.centerY));
-    const radius = distance(this.centerPoint, midPoint)
-    const newMidPoint = calculatePointC(this.centerPoint, midPoint, radius + dis)
-    const result = calculateAngles(this.p1, newMidPoint, this.p2)
-    this.centerPoint.x = result.centerX
-    this.centerPoint.y = result.centerY
-    this.line.centerX = result.centerX
-    this.line.centerY = result.centerY
-  }
-
-  // 计算线段中间点
-  calcMidPoint() {
-    if (this.centerPoint === null) {
-      return {
-        x: (this.p1.x + this.p2.x) / 2,
-        y: (this.p1.y + this.p2.y) / 2,
-      }
-    } else {
-      return calculateArcLengthAndMidPoint(this.p1, this.p2, this.centerPoint)
-    }
-  }
-
   // 计算圆心夹角
   calcCenterAngle() {
     const midPoint = calculateArcLengthAndMidPoint(this.p1, this.p2, this.centerPoint)
@@ -148,14 +121,6 @@ export class SideClass {
       console.log('jhxxx direction is ' + direction)
       context.arc(arcX, arcY, r, startAngle, endAngle, direction)
     }
-  }
-
-  // 普通函数
-  print() {
-    console.log('side-' + this.name)
-    this.p1.print()
-    this.p2.print()
-    // this.line.print();
   }
 }
 
@@ -221,19 +186,6 @@ export class LineClass {
   addSide(side) {
     this.sideSet.add(side)
   }
-
-  // 普通函数
-  // print() {
-  //     if (this.isStraightLine()) {
-  //         console.log(`序号：${this.name}; p1端点：${this.x1},${this.y1}; p2端点：${this.x2},${this.y2}`);
-  //     } else {
-  //         const p1 = new Point(this.x1, this.y1);
-  //         const p2 = new Point(this.x2, this.y2);
-  //         const center = new Point(this.centerX, this.centerY);
-  //         const midPoint = calculateArcLengthAndMidPoint(p1, p2, center);
-  //         console.log(`序号：${this.name}; 圆心：${this.centerX},${this.centerY}; p1端点：${this.x1},${this.y1}; 中间点：${midPoint.x},${midPoint.y}; p2端点：${this.x2},${this.y2}`);
-  //     }
-  // }
 
   static lineSet = new Set()
 
