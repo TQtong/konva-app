@@ -151,21 +151,23 @@ export const createShape = (
     }
     sideNo++
   }
+  console.log(sides)
 
+  debugger
   const konvaShape = new Konva.Shape(config)
-  konvaShape.attrs.name = name
+  // konvaShape.attrs.name = name
   konvaShape.attrs.sides = sides
-  konvaShape.attrs.sceneFuncStr = 'FunctionUtils.sceneFunc'
-  konvaShape.attrs.event = event
-  if (config.draggable && event !== null) {
-    for (const key in event) {
-      if (event.hasOwnProperty(key)) {
-        // 确保是对象自有属性
-        // konvaShape.on(key, event[key]);
-        konvaShape.on(key, eval(event[key]))
-      }
-    }
-  }
+  // // konvaShape.attrs.sceneFuncStr = 'FunctionUtils.sceneFunc'
+  // konvaShape.attrs.event = event
+  // if (config.draggable && event !== null) {
+  //   for (const key in event) {
+  //     if (event.hasOwnProperty(key)) {
+  //       // 确保是对象自有属性
+  //       // konvaShape.on(key, event[key]);
+  //       konvaShape.on(key, eval(event[key]))
+  //     }
+  //   }
+  // }
 
   return konvaShape
 }
@@ -173,7 +175,7 @@ export const createShape = (
 function sceneFunc(ctx) {
   ctx.beginPath()
   ctx.moveTo(this.attrs.sides[0].p1.x, this.attrs.sides[0].p1.y)
-  debugger
+
   for (const side of this.attrs.sides) {
     side.draw(ctx)
   }

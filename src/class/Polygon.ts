@@ -173,21 +173,21 @@ export class PolygonClass {
       shapeScaleEvent,
     ).createKonvaGroup()
     frameGroup.attrs.type = 11301
-    // 门窗
-    const shape = createShape(interPoints, config, false, 'GlassShape', null)
-    const windowGroup = new WindowGroup(shape).createKonvaGroup()
+    // // 门窗
+    // const shape = createShape(interPoints, config, false, 'GlassShape', null)
+    // const windowGroup = new WindowGroup(shape).createKonvaGroup()
 
-    // 拖动矩形块组
-    const conRectGroup = createConDragRectGroup(frameGroup)
-    const midRectGroup = createMidDragRectGroup(frameGroup)
+    // // 拖动矩形块组
+    // const conRectGroup = createConDragRectGroup(frameGroup)
+    // const midRectGroup = createMidDragRectGroup(frameGroup)
 
-    if (this.sideNum === 3) {
-      addEvent([conRectGroup.children[1], conRectGroup.children[2]], SymmetryStretchEvent)
-      addEvent([conRectGroup.children[0]], conPointEvent2)
-    }
+    // if (this.sideNum === 3) {
+    //   addEvent([conRectGroup.children[1], conRectGroup.children[2]], SymmetryStretchEvent)
+    //   addEvent([conRectGroup.children[0]], conPointEvent2)
+    // }
 
     // 门窗 拖动矩形块
-    return [frameGroup, conRectGroup, midRectGroup, windowGroup]
+    return [frameGroup]
   }
 }
 function sceneFunc(ctx) {

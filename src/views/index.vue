@@ -22,7 +22,7 @@ const handleClick = (type: string) => {
   switch (type) {
     case 'square':
       // createRect()
-      const mouseX = 800
+      const mouseX = 400
       const mouseY = 400
       const p1 = {
         x: mouseX,

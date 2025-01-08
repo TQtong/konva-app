@@ -14,7 +14,7 @@ import {
 
 export class SideClass {
   type: number // 类型
-  centerPoint: IPoint // 圆心
+  centerPoint: IPoint | null // 圆心
   p1: IPoint // 点1
   p2: IPoint // 点2
   line: LineClass // 线
@@ -27,7 +27,7 @@ export class SideClass {
     this.p2 = p2
     if (typeof center === 'undefined' || center === null || center.x === -1 || center.y === -1) {
       this.line = LineClass.create(-1, -1, p1.x, p1.y, p2.x, p2.y)
-      this.centerPoint = { x: -1, y: -1 }
+      this.centerPoint = null
     } else {
       this.line = LineClass.create(center.x, center.y, p1.x, p1.y, p2.x, p2.y)
       this.centerPoint = center
